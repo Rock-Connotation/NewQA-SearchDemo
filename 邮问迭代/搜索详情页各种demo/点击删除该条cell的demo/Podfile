@@ -1,0 +1,3 @@
+target '点击删除该条cell的demo' do
+	pod 'Masonry'
+end

@@ -1,0 +1,5 @@
+target 'QA_Search' do
+	pod 'Masonry'
+	
+
+	end

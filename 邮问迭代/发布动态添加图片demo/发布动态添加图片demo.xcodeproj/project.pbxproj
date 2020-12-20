@@ -1,0 +1,646 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		66FD4CB2B8A071E0CBB17E69 /* libPods-发布动态添加图片demo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 864F4B079AC2B132F994C81D /* libPods-发布动态添加图片demo.a */; };
+		B80E75B92580FAAB0041E97B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B80E75B82580FAAB0041E97B /* AppDelegate.m */; };
+		B80E75BC2580FAAB0041E97B /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B80E75BB2580FAAB0041E97B /* SceneDelegate.m */; };
+		B80E75BF2580FAAB0041E97B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B80E75BE2580FAAB0041E97B /* ViewController.m */; };
+		B80E75C22580FAAB0041E97B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B80E75C02580FAAB0041E97B /* Main.storyboard */; };
+		B80E75C42580FAAE0041E97B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B80E75C32580FAAE0041E97B /* Assets.xcassets */; };
+		B80E75C72580FAAE0041E97B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B80E75C52580FAAE0041E97B /* LaunchScreen.storyboard */; };
+		B80E75CA2580FAAE0041E97B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B80E75C92580FAAE0041E97B /* main.m */; };
+		B80E75D42580FAAF0041E97B /* ________demoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B80E75D32580FAAF0041E97B /* ________demoTests.m */; };
+		B80E75DF2580FAAF0041E97B /* ________demoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B80E75DE2580FAAF0041E97B /* ________demoUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B80E75D02580FAAF0041E97B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B80E75AC2580FAAB0041E97B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B80E75B32580FAAB0041E97B;
+			remoteInfo = "发布动态添加图片demo";
+		};
+		B80E75DB2580FAAF0041E97B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B80E75AC2580FAAB0041E97B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B80E75B32580FAAB0041E97B;
+			remoteInfo = "发布动态添加图片demo";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		864F4B079AC2B132F994C81D /* libPods-发布动态添加图片demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-发布动态添加图片demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA0B96FF9903C8AD18E1EAF4 /* Pods-发布动态添加图片demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-发布动态添加图片demo.debug.xcconfig"; path = "Target Support Files/Pods-发布动态添加图片demo/Pods-发布动态添加图片demo.debug.xcconfig"; sourceTree = "<group>"; };
+		B80E75B42580FAAB0041E97B /* 发布动态添加图片demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "发布动态添加图片demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B80E75B72580FAAB0041E97B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B80E75B82580FAAB0041E97B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B80E75BA2580FAAB0041E97B /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		B80E75BB2580FAAB0041E97B /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		B80E75BD2580FAAB0041E97B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		B80E75BE2580FAAB0041E97B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		B80E75C12580FAAB0041E97B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B80E75C32580FAAE0041E97B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B80E75C62580FAAE0041E97B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B80E75C82580FAAE0041E97B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B80E75C92580FAAE0041E97B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B80E75CF2580FAAF0041E97B /* 发布动态添加图片demoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "发布动态添加图片demoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B80E75D32580FAAF0041E97B /* ________demoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ________demoTests.m; sourceTree = "<group>"; };
+		B80E75D52580FAAF0041E97B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B80E75DA2580FAAF0041E97B /* 发布动态添加图片demoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "发布动态添加图片demoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B80E75DE2580FAAF0041E97B /* ________demoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ________demoUITests.m; sourceTree = "<group>"; };
+		B80E75E02580FAAF0041E97B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAECC667A5E44F106C246C12 /* Pods-发布动态添加图片demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-发布动态添加图片demo.release.xcconfig"; path = "Target Support Files/Pods-发布动态添加图片demo/Pods-发布动态添加图片demo.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B80E75B12580FAAB0041E97B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66FD4CB2B8A071E0CBB17E69 /* libPods-发布动态添加图片demo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B80E75CC2580FAAF0041E97B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B80E75D72580FAAF0041E97B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4451EF48FC899EB8E28994B0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AA0B96FF9903C8AD18E1EAF4 /* Pods-发布动态添加图片demo.debug.xcconfig */,
+				FAECC667A5E44F106C246C12 /* Pods-发布动态添加图片demo.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B80E75AB2580FAAB0041E97B = {
+			isa = PBXGroup;
+			children = (
+				B80E75B62580FAAB0041E97B /* 发布动态添加图片demo */,
+				B80E75D22580FAAF0041E97B /* 发布动态添加图片demoTests */,
+				B80E75DD2580FAAF0041E97B /* 发布动态添加图片demoUITests */,
+				B80E75B52580FAAB0041E97B /* Products */,
+				4451EF48FC899EB8E28994B0 /* Pods */,
+				CBA2200D6AC46AA0EA9CD823 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B80E75B52580FAAB0041E97B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B80E75B42580FAAB0041E97B /* 发布动态添加图片demo.app */,
+				B80E75CF2580FAAF0041E97B /* 发布动态添加图片demoTests.xctest */,
+				B80E75DA2580FAAF0041E97B /* 发布动态添加图片demoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B80E75B62580FAAB0041E97B /* 发布动态添加图片demo */ = {
+			isa = PBXGroup;
+			children = (
+				B80E75B72580FAAB0041E97B /* AppDelegate.h */,
+				B80E75B82580FAAB0041E97B /* AppDelegate.m */,
+				B80E75BA2580FAAB0041E97B /* SceneDelegate.h */,
+				B80E75BB2580FAAB0041E97B /* SceneDelegate.m */,
+				B80E75BD2580FAAB0041E97B /* ViewController.h */,
+				B80E75BE2580FAAB0041E97B /* ViewController.m */,
+				B80E75C02580FAAB0041E97B /* Main.storyboard */,
+				B80E75C32580FAAE0041E97B /* Assets.xcassets */,
+				B80E75C52580FAAE0041E97B /* LaunchScreen.storyboard */,
+				B80E75C82580FAAE0041E97B /* Info.plist */,
+				B80E75C92580FAAE0041E97B /* main.m */,
+			);
+			path = "发布动态添加图片demo";
+			sourceTree = "<group>";
+		};
+		B80E75D22580FAAF0041E97B /* 发布动态添加图片demoTests */ = {
+			isa = PBXGroup;
+			children = (
+				B80E75D32580FAAF0041E97B /* ________demoTests.m */,
+				B80E75D52580FAAF0041E97B /* Info.plist */,
+			);
+			path = "发布动态添加图片demoTests";
+			sourceTree = "<group>";
+		};
+		B80E75DD2580FAAF0041E97B /* 发布动态添加图片demoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B80E75DE2580FAAF0041E97B /* ________demoUITests.m */,
+				B80E75E02580FAAF0041E97B /* Info.plist */,
+			);
+			path = "发布动态添加图片demoUITests";
+			sourceTree = "<group>";
+		};
+		CBA2200D6AC46AA0EA9CD823 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				864F4B079AC2B132F994C81D /* libPods-发布动态添加图片demo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B80E75B32580FAAB0041E97B /* 发布动态添加图片demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B80E75E32580FAAF0041E97B /* Build configuration list for PBXNativeTarget "发布动态添加图片demo" */;
+			buildPhases = (
+				6D89D7872B5240394C2634E7 /* [CP] Check Pods Manifest.lock */,
+				B80E75B02580FAAB0041E97B /* Sources */,
+				B80E75B12580FAAB0041E97B /* Frameworks */,
+				B80E75B22580FAAB0041E97B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "发布动态添加图片demo";
+			productName = "发布动态添加图片demo";
+			productReference = B80E75B42580FAAB0041E97B /* 发布动态添加图片demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B80E75CE2580FAAF0041E97B /* 发布动态添加图片demoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B80E75E62580FAAF0041E97B /* Build configuration list for PBXNativeTarget "发布动态添加图片demoTests" */;
+			buildPhases = (
+				B80E75CB2580FAAF0041E97B /* Sources */,
+				B80E75CC2580FAAF0041E97B /* Frameworks */,
+				B80E75CD2580FAAF0041E97B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B80E75D12580FAAF0041E97B /* PBXTargetDependency */,
+			);
+			name = "发布动态添加图片demoTests";
+			productName = "发布动态添加图片demoTests";
+			productReference = B80E75CF2580FAAF0041E97B /* 发布动态添加图片demoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B80E75D92580FAAF0041E97B /* 发布动态添加图片demoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B80E75E92580FAAF0041E97B /* Build configuration list for PBXNativeTarget "发布动态添加图片demoUITests" */;
+			buildPhases = (
+				B80E75D62580FAAF0041E97B /* Sources */,
+				B80E75D72580FAAF0041E97B /* Frameworks */,
+				B80E75D82580FAAF0041E97B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B80E75DC2580FAAF0041E97B /* PBXTargetDependency */,
+			);
+			name = "发布动态添加图片demoUITests";
+			productName = "发布动态添加图片demoUITests";
+			productReference = B80E75DA2580FAAF0041E97B /* 发布动态添加图片demoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B80E75AC2580FAAB0041E97B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1220;
+				TargetAttributes = {
+					B80E75B32580FAAB0041E97B = {
+						CreatedOnToolsVersion = 12.2;
+					};
+					B80E75CE2580FAAF0041E97B = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = B80E75B32580FAAB0041E97B;
+					};
+					B80E75D92580FAAF0041E97B = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = B80E75B32580FAAB0041E97B;
+					};
+				};
+			};
+			buildConfigurationList = B80E75AF2580FAAB0041E97B /* Build configuration list for PBXProject "发布动态添加图片demo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B80E75AB2580FAAB0041E97B;
+			productRefGroup = B80E75B52580FAAB0041E97B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B80E75B32580FAAB0041E97B /* 发布动态添加图片demo */,
+				B80E75CE2580FAAF0041E97B /* 发布动态添加图片demoTests */,
+				B80E75D92580FAAF0041E97B /* 发布动态添加图片demoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B80E75B22580FAAB0041E97B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B80E75C72580FAAE0041E97B /* LaunchScreen.storyboard in Resources */,
+				B80E75C42580FAAE0041E97B /* Assets.xcassets in Resources */,
+				B80E75C22580FAAB0041E97B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B80E75CD2580FAAF0041E97B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B80E75D82580FAAF0041E97B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6D89D7872B5240394C2634E7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-发布动态添加图片demo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B80E75B02580FAAB0041E97B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B80E75BF2580FAAB0041E97B /* ViewController.m in Sources */,
+				B80E75B92580FAAB0041E97B /* AppDelegate.m in Sources */,
+				B80E75CA2580FAAE0041E97B /* main.m in Sources */,
+				B80E75BC2580FAAB0041E97B /* SceneDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B80E75CB2580FAAF0041E97B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B80E75D42580FAAF0041E97B /* ________demoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B80E75D62580FAAF0041E97B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B80E75DF2580FAAF0041E97B /* ________demoUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B80E75D12580FAAF0041E97B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B80E75B32580FAAB0041E97B /* 发布动态添加图片demo */;
+			targetProxy = B80E75D02580FAAF0041E97B /* PBXContainerItemProxy */;
+		};
+		B80E75DC2580FAAF0041E97B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B80E75B32580FAAB0041E97B /* 发布动态添加图片demo */;
+			targetProxy = B80E75DB2580FAAF0041E97B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B80E75C02580FAAB0041E97B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B80E75C12580FAAB0041E97B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B80E75C52580FAAE0041E97B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B80E75C62580FAAE0041E97B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B80E75E12580FAAF0041E97B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		B80E75E22580FAAF0041E97B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B80E75E42580FAAF0041E97B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA0B96FF9903C8AD18E1EAF4 /* Pods-发布动态添加图片demo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = USX8LB59D7;
+				INFOPLIST_FILE = "发布动态添加图片demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "khfdkhvihvkshvksh.--------demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B80E75E52580FAAF0041E97B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FAECC667A5E44F106C246C12 /* Pods-发布动态添加图片demo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = USX8LB59D7;
+				INFOPLIST_FILE = "发布动态添加图片demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "khfdkhvihvkshvksh.--------demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B80E75E72580FAAF0041E97B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = USX8LB59D7;
+				INFOPLIST_FILE = "发布动态添加图片demoTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "khfdkhvihvkshvksh.--------demoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/发布动态添加图片demo.app/发布动态添加图片demo";
+			};
+			name = Debug;
+		};
+		B80E75E82580FAAF0041E97B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = USX8LB59D7;
+				INFOPLIST_FILE = "发布动态添加图片demoTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "khfdkhvihvkshvksh.--------demoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/发布动态添加图片demo.app/发布动态添加图片demo";
+			};
+			name = Release;
+		};
+		B80E75EA2580FAAF0041E97B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = USX8LB59D7;
+				INFOPLIST_FILE = "发布动态添加图片demoUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "khfdkhvihvkshvksh.--------demoUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "发布动态添加图片demo";
+			};
+			name = Debug;
+		};
+		B80E75EB2580FAAF0041E97B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = USX8LB59D7;
+				INFOPLIST_FILE = "发布动态添加图片demoUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "khfdkhvihvkshvksh.--------demoUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "发布动态添加图片demo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B80E75AF2580FAAB0041E97B /* Build configuration list for PBXProject "发布动态添加图片demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B80E75E12580FAAF0041E97B /* Debug */,
+				B80E75E22580FAAF0041E97B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B80E75E32580FAAF0041E97B /* Build configuration list for PBXNativeTarget "发布动态添加图片demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B80E75E42580FAAF0041E97B /* Debug */,
+				B80E75E52580FAAF0041E97B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B80E75E62580FAAF0041E97B /* Build configuration list for PBXNativeTarget "发布动态添加图片demoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B80E75E72580FAAF0041E97B /* Debug */,
+				B80E75E82580FAAF0041E97B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B80E75E92580FAAF0041E97B /* Build configuration list for PBXNativeTarget "发布动态添加图片demoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B80E75EA2580FAAF0041E97B /* Debug */,
+				B80E75EB2580FAAF0041E97B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B80E75AC2580FAAB0041E97B /* Project object */;
+}

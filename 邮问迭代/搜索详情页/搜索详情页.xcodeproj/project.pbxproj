@@ -29,6 +29,8 @@
 		B87FEEDF257382FE005ADA34 /* SearchBeginningTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = B87FEEDE257382FE005ADA34 /* SearchBeginningTopView.m */; };
 		B87FEEE525738466005ADA34 /* KnowledegView.m in Sources */ = {isa = PBXBuildFile; fileRef = B87FEEE425738466005ADA34 /* KnowledegView.m */; };
 		B8C0C736257E945D004138B3 /* NOSearchResultsCV.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C0C735257E945D004138B3 /* NOSearchResultsCV.m */; };
+		B8E6AD74258FAF660041BAB0 /* PhotoImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8E6AD73258FAF660041BAB0 /* PhotoImageView.m */; };
+		B8E6AD7A258FB6010041BAB0 /* AddPhotosBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = B8E6AD79258FB6010041BAB0 /* AddPhotosBtn.m */; };
 		F8B29907B9397A383D2AABCF /* libPods-搜索详情页.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 083F5745D7B8FFDB6DB727C1 /* libPods-搜索详情页.a */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +97,10 @@
 		B87FEEE425738466005ADA34 /* KnowledegView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KnowledegView.m; sourceTree = "<group>"; };
 		B8C0C734257E945D004138B3 /* NOSearchResultsCV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NOSearchResultsCV.h; sourceTree = "<group>"; };
 		B8C0C735257E945D004138B3 /* NOSearchResultsCV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NOSearchResultsCV.m; sourceTree = "<group>"; };
+		B8E6AD72258FAF660041BAB0 /* PhotoImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoImageView.h; sourceTree = "<group>"; };
+		B8E6AD73258FAF660041BAB0 /* PhotoImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoImageView.m; sourceTree = "<group>"; };
+		B8E6AD78258FB6010041BAB0 /* AddPhotosBtn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddPhotosBtn.h; sourceTree = "<group>"; };
+		B8E6AD79258FB6010041BAB0 /* AddPhotosBtn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddPhotosBtn.m; sourceTree = "<group>"; };
 		DE2426863E98ADF6108AA3A7 /* Pods-搜索详情页.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-搜索详情页.debug.xcconfig"; path = "Target Support Files/Pods-搜索详情页/Pods-搜索详情页.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -170,6 +176,10 @@
 				B8002BEB258F75460056F68A /* RelaeseDynamicView.m */,
 				B8002BF0258F88C00056F68A /* PhotoCollectionViewCell.h */,
 				B8002BF1258F88C00056F68A /* PhotoCollectionViewCell.m */,
+				B8E6AD72258FAF660041BAB0 /* PhotoImageView.h */,
+				B8E6AD73258FAF660041BAB0 /* PhotoImageView.m */,
+				B8E6AD78258FB6010041BAB0 /* AddPhotosBtn.h */,
+				B8E6AD79258FB6010041BAB0 /* AddPhotosBtn.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -474,8 +484,10 @@
 				B87FEEBD25735C99005ADA34 /* SearchBenginningCV.m in Sources */,
 				B8204B7025764248002FF9FB /* HotSearchBtn.m in Sources */,
 				B87FEEE525738466005ADA34 /* KnowledegView.m in Sources */,
+				B8E6AD74258FAF660041BAB0 /* PhotoImageView.m in Sources */,
 				B87FEE8825735BBE005ADA34 /* main.m in Sources */,
 				B87FEE7A25735BBB005ADA34 /* SceneDelegate.m in Sources */,
+				B8E6AD7A258FB6010041BAB0 /* AddPhotosBtn.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

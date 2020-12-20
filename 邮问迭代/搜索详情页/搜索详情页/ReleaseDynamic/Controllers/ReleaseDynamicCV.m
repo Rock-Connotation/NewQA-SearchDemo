@@ -6,11 +6,21 @@
 //
 
 #import <Masonry.h>
+#import <PhotosUI/PhotosUI.h>           //用于使用PHPicker
+    
 #import "ReleaseDynamicCV.h"
 #import "RelaeseDynamicView.h"              //界面
-@interface ReleaseDynamicCV ()<UITextViewDelegate>
-@property (nonatomic, strong) RelaeseDynamicView *releaseDynamicView;
+#import "AddPhotosBtn.h"
+#import "PhotoImageView.h"
 
+//#define sideLegth MAIN_SCREEN_W * 0.296;      //图片框的边长
+@interface ReleaseDynamicCV ()<UITextViewDelegate,UINavigationControllerDelegate,PHPickerViewControllerDelegate,PhotoImageViewDelegate>
+@property (nonatomic, strong) RelaeseDynamicView *releaseDynamicView;
+/// 从相册中获取到的图片
+@property (nonatomic, strong) NSMutableArray <UIImage *>* imagesAry;
+@property (nonatomic, strong) NSMutableArray <UIImageView *>*imageViewArray;
+
+@property (nonatomic, strong) AddPhotosBtn *addPhotosBtn;
 @end
 
 @implementation ReleaseDynamicCV
@@ -29,12 +39,183 @@
     [self.view addSubview:self.releaseDynamicView];
         //设置TextView的代理
     self.releaseDynamicView.releaseTextView.delegate = self;
+    
+    self.imagesAry = [NSMutableArray array];
+    self.imageViewArray = [NSMutableArray array];
+    self.addPhotosBtn = [[AddPhotosBtn alloc] init];
+    [self.view addSubview:self.addPhotosBtn];
+    [self.addPhotosBtn addTarget:self action:@selector(addPhotos) forControlEvents:UIControlEventTouchUpInside];
+    [self.addPhotosBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.releaseDynamicView.releaseTextView.mas_bottom).offset(7);
+        make.left.equalTo(self.view).offset(16);
+        make.size.mas_equalTo(CGSizeMake(MAIN_SCREEN_W * 0.296, MAIN_SCREEN_W * 0.296));
+    }];
 }
 
-/// 添加照片的collectionView
-- (void)addPhotoCollectionView{
+
+/// 添加图片
+- (void)addPhotos{
     
+    
+    //配置PhPickerConfiguration
+    PHPickerConfiguration *configuration = [[PHPickerConfiguration alloc] init];
+    
+    //设置当前的选择模式
+//    configuration.preferredAssetRepresentationMode = PHPickerConfigurationAssetRepresentationModeAutomatic;
+    
+    //设置最多只能选九张图片 如果设置为0，则是无限制选择。默认为1
+    configuration.selectionLimit = 9;
+    //设定只能选择图片  //设定为nil的时候图片、livePhoto、视频都可以选择
+    configuration.filter = nil;
+    
+    //设置PHPickerController
+    PHPickerViewController *pickerCV = [[PHPickerViewController alloc] initWithConfiguration:configuration];
+    pickerCV.delegate = self;       //设置代理
+    
+    //弹出图片选择器
+    [self presentViewController:pickerCV animated:YES completion:nil];
 }
+
+- (void)clearPhotoImageView:(UIImageView *)imageView{
+    
+    UIImage *image = imageView.image;
+    //1.先删除照片组中的照片
+    NSMutableArray *array = [self.imagesAry mutableCopy];
+    for (UIImage *resultImage in array) {
+        if ([resultImage isEqual:image]) {
+            [array removeObject:resultImage];
+            self.imagesAry = array;
+            break;;
+        }
+    }
+//    //2.再移除照片框
+    [imageView removeFromSuperview];
+    
+    //3.重新布局
+    [self imageViewsConstraint];
+}
+
+/// 添加的图片框的约束
+- (void)imageViewsConstraint{
+    //如果图片数组为0，则添加按钮回到初始的位置
+    if (self.imagesAry.count == 0) {
+        
+        [self.addPhotosBtn removeFromSuperview];
+        self.addPhotosBtn = [[AddPhotosBtn alloc] init];
+        [self.view addSubview:self.addPhotosBtn];
+        [self.addPhotosBtn addTarget:self action:@selector(addPhotos) forControlEvents:UIControlEventTouchUpInside];
+        [self.addPhotosBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.releaseDynamicView.releaseTextView.mas_bottom).offset(7);
+            make.left.equalTo(self.view).offset(16);
+            make.size.mas_equalTo(CGSizeMake(MAIN_SCREEN_W * 0.296, MAIN_SCREEN_W * 0.296));
+        }];
+        return;
+    }
+    
+    // 清除之前所有的图片框
+    if (self.imageViewArray.count > 0) {
+        for (int i = 0; i < self.imageViewArray.count; i++) {
+            UIImageView *imageView = self.imageViewArray[i];
+            [imageView removeFromSuperview];
+        }
+        [self.imageViewArray removeAllObjects];
+    }
+    
+    //清除图片数组里面大于9的的那些图片
+    for (int i = 0; i < self.imagesAry.count; i++){
+        if (i > 8) {
+            UIImage *image = self.imagesAry[i];
+            [self.imagesAry removeObject:image];
+        }
+    }
+    
+    //遍历图片数组，创建imageView
+    for (int i = 0; i < self.imagesAry.count; i++) {
+        PhotoImageView *imageView = [[PhotoImageView alloc] init];
+        imageView.delegate = self;
+        imageView.image = self.imagesAry[i];
+        [self.imageViewArray addObject:imageView];
+        [self.view addSubview:imageView];
+    }
+    //约束图片框
+    for (int i = 0; i < self.imageViewArray.count; i++) {
+        //前三张图片约束
+        if (i < 3) {
+            [self.imageViewArray[i] mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(self.view).offset( 15 + i * (6 + MAIN_SCREEN_W * 0.296));
+                make.top.equalTo(self.releaseDynamicView.releaseTextView.mas_bottom).offset(7);
+                make.size.mas_equalTo(CGSizeMake(MAIN_SCREEN_W * 0.296, MAIN_SCREEN_W * 0.296));
+            }];
+        }else{
+            [self.imageViewArray[i] mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(self.view).offset( 15 + i%3 * (6 + MAIN_SCREEN_W * 0.296));
+                make.top.equalTo(self.releaseDynamicView.releaseTextView.mas_bottom).offset(7 + i/3 * (MAIN_SCREEN_W * 0.296 + 5.5));
+                make.size.mas_equalTo(CGSizeMake(MAIN_SCREEN_W * 0.296, MAIN_SCREEN_W * 0.296));
+            }];
+        }
+        
+        //设置添加照片按钮的约束
+        if (i == self.imageViewArray.count - 1) {
+            [self.addPhotosBtn removeFromSuperview];
+            self.addPhotosBtn = [[AddPhotosBtn alloc] init];
+            [self.view addSubview:self.addPhotosBtn];
+            [self.addPhotosBtn addTarget:self action:@selector(addPhotos) forControlEvents:UIControlEventTouchUpInside];
+            if (i < 2) {
+                [self.addPhotosBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.left.equalTo(self.view).offset(15 + self.imageViewArray.count * (6 + MAIN_SCREEN_W * 0.296));
+                    make.top.equalTo(self.releaseDynamicView.releaseTextView.mas_bottom).offset(7 );
+                    make.size.mas_equalTo(CGSizeMake(MAIN_SCREEN_W * 0.296, MAIN_SCREEN_W * 0.296));
+                }];
+            }else{
+                [self.addPhotosBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.left.equalTo(self.view).offset(15 + self.imageViewArray.count%3 * (6 + MAIN_SCREEN_W * 0.296));
+                    make.top.equalTo(self.releaseDynamicView.releaseTextView.mas_bottom).offset(7 + (i+1)/3 * (MAIN_SCREEN_W * 0.296 + 5.5));
+                    make.size.mas_equalTo(CGSizeMake(MAIN_SCREEN_W * 0.296, MAIN_SCREEN_W * 0.296));
+                }];
+            }
+        }
+    }
+    
+    //如果图片框为9时，去除添加图片按钮
+    if (self.imagesAry.count == 9) {
+        [self.addPhotosBtn removeFromSuperview];
+    }
+}
+
+//MARK:PHPicker的代理方法
+/// 选择器调用完之后会使用这个方法
+/// @param picker 当前使用的图片选择器
+/// @param results 选中的图片数组
+- (void)picker:(PHPickerViewController *)picker didFinishPicking:(NSArray<PHPickerResult *> *)results{
+    //使图片选择器消失
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    for (int i = 0; i < results.count; i++) {
+        //获取返回的对象
+        PHPickerResult *result = results[i];
+        //获取图片
+        [result.itemProvider loadObjectOfClass:[UIImage class] completionHandler:^(__kindof id<NSItemProviderReading>  _Nullable object, NSError * _Nullable error) {
+            if ([object isKindOfClass:[UIImage class]]) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    __weak typeof(self) weakSelf = self;
+                    //如果图片大于九张，就删除掉前面选择的
+                    if (weakSelf.imagesAry.count <= 9) {
+//                        [weakSelf.imagesAry removeObjectAtIndex:0];
+                        [weakSelf.imagesAry addObject:(UIImage *)object];
+                    }
+                    
+                    
+                    //遍历循环到最后一个时进行图片框的添加约束
+                    dispatch_async(dispatch_get_main_queue(),^{
+                        if (i == results.count - 1) {
+                            [weakSelf imageViewsConstraint];
+                        }
+                    });
+                });
+            }
+        }];
+    }
+}
+
 
 #pragma mark- UITextView代理
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView{

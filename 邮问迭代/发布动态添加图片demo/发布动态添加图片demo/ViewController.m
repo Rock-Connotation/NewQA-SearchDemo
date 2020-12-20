@@ -102,6 +102,7 @@
     //使图片选择器消失
     [picker dismissViewControllerAnimated:YES completion:nil];
     NSLog(@"%lu",(unsigned long)results.count);
+    
    //获取选中的图片
 //    for (PHPickerResult *result in results) {
 //        NSLog(@"选取后的每一个结果是%@",result);
@@ -121,6 +122,7 @@
 //            }
 //        }];
 //    }
+    
     for (int i = 0; i < results.count; i++) {
         //获取返回的对象
         PHPickerResult *result = results[i];
@@ -129,15 +131,19 @@
             if ([object isKindOfClass:[UIImage class]]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.imagesArray addObject:(UIImage *)object];
-                    
-                    dispatch_async(dispatch_get_main_queue(),^{
-                        UIImageView *imageView = [[UIImageView alloc] init];
-                        imageView.contentMode = UIViewContentModeScaleAspectFit;
-                        imageView.image = self.imagesArray.lastObject;
-                        imageView.frame = CGRectMake(100, 100, 200, 200);
-                        [self.view addSubview:imageView];
-                    });
-                  
+
+                    if (i == results.count -1 ) {
+                        dispatch_async(dispatch_get_main_queue(),^{
+                            UIImageView *imageView = [[UIImageView alloc] init];
+                            imageView.contentMode = UIViewContentModeScaleAspectFit;
+                            imageView.image = self.imagesArray.lastObject;
+                            imageView.frame = CGRectMake(100, 100, 200, 200);
+                            [self.view addSubview:imageView];
+                            
+                            NSLog(@"选中的图片个数为%d",self.imagesArray.count);
+                        });
+                    }
+
                 });
             }
         }];

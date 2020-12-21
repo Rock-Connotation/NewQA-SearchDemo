@@ -20,7 +20,11 @@
 @property (nonatomic, strong) NSMutableArray <UIImage *>* imagesAry;
 @property (nonatomic, strong) NSMutableArray <UIImageView *>*imageViewArray;
 
+/// 添加照片的按钮
 @property (nonatomic, strong) AddPhotosBtn *addPhotosBtn;
+
+/// 照片按钮底部的分割线
+@property (nonatomic, strong) UIView *bottomSeparation;
 @end
 
 @implementation ReleaseDynamicCV
@@ -40,8 +44,18 @@
         //设置TextView的代理
     self.releaseDynamicView.releaseTextView.delegate = self;
     
+    //添加照片按钮和底部的分割View
+    [self addPhotosBtnAndSparationView];
+    
+}
+
+/// 添加照片按钮和底部的分割View
+- (void)addPhotosBtnAndSparationView{
+    //初始化图片和图片框数组
     self.imagesAry = [NSMutableArray array];
     self.imageViewArray = [NSMutableArray array];
+    
+    //添加图片按钮
     self.addPhotosBtn = [[AddPhotosBtn alloc] init];
     [self.view addSubview:self.addPhotosBtn];
     [self.addPhotosBtn addTarget:self action:@selector(addPhotos) forControlEvents:UIControlEventTouchUpInside];
@@ -50,8 +64,17 @@
         make.left.equalTo(self.view).offset(16);
         make.size.mas_equalTo(CGSizeMake(MAIN_SCREEN_W * 0.296, MAIN_SCREEN_W * 0.296));
     }];
+    
+    //添加图片按钮的底部的的view
+    self.bottomSeparation = [[UIView alloc] init];
+    self.bottomSeparation.backgroundColor = [UIColor colorWithRed:226/255.0 green:232/255.0 blue:238/255.0 alpha:1.0];
+    [self.view addSubview:self.bottomSeparation];
+    [self.bottomSeparation mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.addPhotosBtn.mas_bottom).offset(MAIN_SCREEN_H * 0.0179);
+        make.left.equalTo(self.view);
+        make.size.mas_equalTo(CGSizeMake(MAIN_SCREEN_W, 1));
+    }];
 }
-
 
 /// 添加图片
 - (void)addPhotos{
@@ -100,14 +123,21 @@
     //如果图片数组为0，则添加按钮回到初始的位置
     if (self.imagesAry.count == 0) {
         
-        [self.addPhotosBtn removeFromSuperview];
-        self.addPhotosBtn = [[AddPhotosBtn alloc] init];
-        [self.view addSubview:self.addPhotosBtn];
-        [self.addPhotosBtn addTarget:self action:@selector(addPhotos) forControlEvents:UIControlEventTouchUpInside];
+//        [self.addPhotosBtn removeFromSuperview];
+//        self.addPhotosBtn = [[AddPhotosBtn alloc] init];
+//        [self.view addSubview:self.addPhotosBtn];
+//        [self.addPhotosBtn addTarget:self action:@selector(addPhotos) forControlEvents:UIControlEventTouchUpInside];
         [self.addPhotosBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.releaseDynamicView.releaseTextView.mas_bottom).offset(7);
             make.left.equalTo(self.view).offset(16);
             make.size.mas_equalTo(CGSizeMake(MAIN_SCREEN_W * 0.296, MAIN_SCREEN_W * 0.296));
+        }];
+        
+        //分割线
+        [self.bottomSeparation mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.addPhotosBtn.mas_bottom).offset(MAIN_SCREEN_H * 0.0179);
+            make.left.equalTo(self.view);
+            make.size.mas_equalTo(CGSizeMake(MAIN_SCREEN_W, 1));
         }];
         return;
     }
@@ -139,46 +169,43 @@
     }
     //约束图片框
     for (int i = 0; i < self.imageViewArray.count; i++) {
-        //前三张图片约束
-        if (i < 3) {
-            [self.imageViewArray[i] mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(self.view).offset( 15 + i * (6 + MAIN_SCREEN_W * 0.296));
-                make.top.equalTo(self.releaseDynamicView.releaseTextView.mas_bottom).offset(7);
-                make.size.mas_equalTo(CGSizeMake(MAIN_SCREEN_W * 0.296, MAIN_SCREEN_W * 0.296));
-            }];
-        }else{
-            [self.imageViewArray[i] mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(self.view).offset( 15 + i%3 * (6 + MAIN_SCREEN_W * 0.296));
-                make.top.equalTo(self.releaseDynamicView.releaseTextView.mas_bottom).offset(7 + i/3 * (MAIN_SCREEN_W * 0.296 + 5.5));
-                make.size.mas_equalTo(CGSizeMake(MAIN_SCREEN_W * 0.296, MAIN_SCREEN_W * 0.296));
-            }];
-        }
+        //对图片框进行约束布局
+        [self.imageViewArray[i] mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.view).offset( 15 + i%3 * (6 + MAIN_SCREEN_W * 0.296));
+            make.top.equalTo(self.releaseDynamicView.releaseTextView.mas_bottom).offset(7 + i/3 * (MAIN_SCREEN_W * 0.296 + 5.5));
+            make.size.mas_equalTo(CGSizeMake(MAIN_SCREEN_W * 0.296, MAIN_SCREEN_W * 0.296));
+        }];
         
         //设置添加照片按钮的约束
         if (i == self.imageViewArray.count - 1) {
-            [self.addPhotosBtn removeFromSuperview];
-            self.addPhotosBtn = [[AddPhotosBtn alloc] init];
-            [self.view addSubview:self.addPhotosBtn];
-            [self.addPhotosBtn addTarget:self action:@selector(addPhotos) forControlEvents:UIControlEventTouchUpInside];
-            if (i < 2) {
-                [self.addPhotosBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.left.equalTo(self.view).offset(15 + self.imageViewArray.count * (6 + MAIN_SCREEN_W * 0.296));
-                    make.top.equalTo(self.releaseDynamicView.releaseTextView.mas_bottom).offset(7 );
-                    make.size.mas_equalTo(CGSizeMake(MAIN_SCREEN_W * 0.296, MAIN_SCREEN_W * 0.296));
-                }];
-            }else{
-                [self.addPhotosBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.left.equalTo(self.view).offset(15 + self.imageViewArray.count%3 * (6 + MAIN_SCREEN_W * 0.296));
-                    make.top.equalTo(self.releaseDynamicView.releaseTextView.mas_bottom).offset(7 + (i+1)/3 * (MAIN_SCREEN_W * 0.296 + 5.5));
-                    make.size.mas_equalTo(CGSizeMake(MAIN_SCREEN_W * 0.296, MAIN_SCREEN_W * 0.296));
-                }];
-            }
+            [self.addPhotosBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(self.view).offset(15 + self.imageViewArray.count%3 * (6 + MAIN_SCREEN_W * 0.296));
+                make.top.equalTo(self.releaseDynamicView.releaseTextView.mas_bottom).offset(7 + (i+1)/3 * (MAIN_SCREEN_W * 0.296 + 5.5));
+                make.size.mas_equalTo(CGSizeMake(MAIN_SCREEN_W * 0.296, MAIN_SCREEN_W * 0.296));
+            }];
+            
+            //分割线
+            [self.bottomSeparation mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(self.addPhotosBtn.mas_bottom).offset(MAIN_SCREEN_H * 0.0569);
+                make.left.equalTo(self.view);
+                make.size.mas_equalTo(CGSizeMake(MAIN_SCREEN_W, 1));
+            }];
         }
+        
+        
+        
     }
     
     //如果图片框为9时，去除添加图片按钮
     if (self.imagesAry.count == 9) {
         [self.addPhotosBtn removeFromSuperview];
+        
+        //分割线布局
+        [self.bottomSeparation mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.releaseDynamicView.releaseTextView.mas_bottom).offset(7 + 3 * (MAIN_SCREEN_W * 0.296 + 5.5));
+            make.left.equalTo(self.view);
+            make.size.mas_equalTo(CGSizeMake(MAIN_SCREEN_W, 1));
+        }];
     }
 }
 

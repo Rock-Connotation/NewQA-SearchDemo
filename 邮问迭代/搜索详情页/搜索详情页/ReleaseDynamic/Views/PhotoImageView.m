@@ -24,6 +24,10 @@
             make.size.mas_equalTo(CGSizeMake(20, 20));
         }];
         
+        //设置圆角
+        self.layer.cornerRadius = 10;
+        self.layer.masksToBounds = YES;
+        
     }
     return self;
 }

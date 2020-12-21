@@ -13,6 +13,10 @@
     if (self) {
         [self setBackgroundImage:[UIImage imageNamed:@"添加图片背景"] forState:UIControlStateNormal];
         
+        //设置圆角
+        self.layer.cornerRadius = 10;
+        self.layer.masksToBounds = YES;
+        
         //添加中心的小图片框
         UIImageView *imageView = [[UIImageView alloc] init];
         imageView.image = [UIImage imageNamed:@"相机"];

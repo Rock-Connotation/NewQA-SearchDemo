@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B8002BEC258F75460056F68A /* RelaeseDynamicView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8002BEB258F75460056F68A /* RelaeseDynamicView.m */; };
 		B8002BF2258F88C00056F68A /* PhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8002BF1258F88C00056F68A /* PhotoCollectionViewCell.m */; };
+		B819B68F259190CE00CB36DA /* CircleLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = B819B68E259190CE00CB36DA /* CircleLabelView.m */; };
 		B8204B7025764248002FF9FB /* HotSearchBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = B8204B6F25764248002FF9FB /* HotSearchBtn.m */; };
 		B8204B7C257661A7002FF9FB /* HistoryCell_Search.m in Sources */ = {isa = PBXBuildFile; fileRef = B8204B7B257661A6002FF9FB /* HistoryCell_Search.m */; };
 		B8204B822577E6E3002FF9FB /* SearchEndCV.m in Sources */ = {isa = PBXBuildFile; fileRef = B8204B812577E6E3002FF9FB /* SearchEndCV.m */; };
@@ -58,6 +59,8 @@
 		B8002BEB258F75460056F68A /* RelaeseDynamicView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RelaeseDynamicView.m; sourceTree = "<group>"; };
 		B8002BF0258F88C00056F68A /* PhotoCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoCollectionViewCell.h; sourceTree = "<group>"; };
 		B8002BF1258F88C00056F68A /* PhotoCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoCollectionViewCell.m; sourceTree = "<group>"; };
+		B819B68D259190CE00CB36DA /* CircleLabelView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CircleLabelView.h; sourceTree = "<group>"; };
+		B819B68E259190CE00CB36DA /* CircleLabelView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircleLabelView.m; sourceTree = "<group>"; };
 		B8204B6E25764248002FF9FB /* HotSearchBtn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HotSearchBtn.h; sourceTree = "<group>"; };
 		B8204B6F25764248002FF9FB /* HotSearchBtn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotSearchBtn.m; sourceTree = "<group>"; };
 		B8204B7A257661A6002FF9FB /* HistoryCell_Search.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryCell_Search.h; sourceTree = "<group>"; };
@@ -180,6 +183,8 @@
 				B8E6AD73258FAF660041BAB0 /* PhotoImageView.m */,
 				B8E6AD78258FB6010041BAB0 /* AddPhotosBtn.h */,
 				B8E6AD79258FB6010041BAB0 /* AddPhotosBtn.m */,
+				B819B68D259190CE00CB36DA /* CircleLabelView.h */,
+				B819B68E259190CE00CB36DA /* CircleLabelView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -485,6 +490,7 @@
 				B8204B7025764248002FF9FB /* HotSearchBtn.m in Sources */,
 				B87FEEE525738466005ADA34 /* KnowledegView.m in Sources */,
 				B8E6AD74258FAF660041BAB0 /* PhotoImageView.m in Sources */,
+				B819B68F259190CE00CB36DA /* CircleLabelView.m in Sources */,
 				B87FEE8825735BBE005ADA34 /* main.m in Sources */,
 				B87FEE7A25735BBB005ADA34 /* SceneDelegate.m in Sources */,
 				B8E6AD7A258FB6010041BAB0 /* AddPhotosBtn.m in Sources */,

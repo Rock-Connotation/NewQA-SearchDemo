@@ -12,9 +12,8 @@
 #import "RelaeseDynamicView.h"              //界面
 #import "AddPhotosBtn.h"
 #import "PhotoImageView.h"
-
-//#define sideLegth MAIN_SCREEN_W * 0.296;      //图片框的边长
-@interface ReleaseDynamicCV ()<UITextViewDelegate,UINavigationControllerDelegate,PHPickerViewControllerDelegate,PhotoImageViewDelegate>
+#import "CircleLabelView.h"                 //底部的圈子标签的View
+@interface ReleaseDynamicCV ()<UITextViewDelegate,UINavigationControllerDelegate,PHPickerViewControllerDelegate,PhotoImageViewDelegate,CircleLabelViewDelegate>
 @property (nonatomic, strong) RelaeseDynamicView *releaseDynamicView;
 /// 从相册中获取到的图片
 @property (nonatomic, strong) NSMutableArray <UIImage *>* imagesAry;
@@ -23,8 +22,8 @@
 /// 添加照片的按钮
 @property (nonatomic, strong) AddPhotosBtn *addPhotosBtn;
 
-/// 照片按钮底部的分割线
-@property (nonatomic, strong) UIView *bottomSeparation;
+/// 底部的圈子标签的View
+@property (nonatomic, strong) CircleLabelView *circleLabelView;
 @end
 
 @implementation ReleaseDynamicCV
@@ -49,7 +48,7 @@
     
 }
 
-/// 添加照片按钮和底部的分割View
+/// 添加照片按钮和底部圈子标签View
 - (void)addPhotosBtnAndSparationView{
     //初始化图片和图片框数组
     self.imagesAry = [NSMutableArray array];
@@ -65,15 +64,27 @@
         make.size.mas_equalTo(CGSizeMake(MAIN_SCREEN_W * 0.296, MAIN_SCREEN_W * 0.296));
     }];
     
-    //添加图片按钮的底部的的view
-    self.bottomSeparation = [[UIView alloc] init];
-    self.bottomSeparation.backgroundColor = [UIColor colorWithRed:226/255.0 green:232/255.0 blue:238/255.0 alpha:1.0];
-    [self.view addSubview:self.bottomSeparation];
-    [self.bottomSeparation mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.addPhotosBtn.mas_bottom).offset(MAIN_SCREEN_H * 0.0179);
-        make.left.equalTo(self.view);
-        make.size.mas_equalTo(CGSizeMake(MAIN_SCREEN_W, 1));
+    //圈子标签View
+    NSArray *titlearray = @[@"校园周边",@"海底捞",@"学习",@"运动",@"兴趣",@"问答",@"其他",@"123"];
+    self.circleLabelView = [[CircleLabelView alloc] initWithArrays:titlearray];
+    [self.view addSubview:self.circleLabelView];
+    [self.circleLabelView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(self.view);
+        make.top.equalTo(self.addPhotosBtn.mas_bottom).offset(MAIN_SCREEN_H * 0.0569);
     }];
+    self.circleLabelView.delegate = self;
+}
+
+//MARK:圈子标签的代理
+- (void)clickACirleBtn:(UIButton *)sender{
+    for (UIButton *button in self.circleLabelView.buttonArray) {
+        if (button.tag != sender.tag) {
+            [button setBackgroundImage:[UIImage imageNamed:@"圈子标签未选中背景"] forState:UIControlStateNormal];
+        }else{
+            [button setBackgroundImage:[UIImage imageNamed:@"圈子标签选中背景"] forState:UIControlStateNormal];
+        }
+//        NSLog(@"%@",sender.titleLabel.text);
+    }
 }
 
 /// 添加图片
@@ -115,6 +126,7 @@
     [imageView removeFromSuperview];
     
     //3.重新布局
+        //判断添加图片框是否还存在，不存在就创建
     [self imageViewsConstraint];
 }
 
@@ -122,23 +134,12 @@
 - (void)imageViewsConstraint{
     //如果图片数组为0，则添加按钮回到初始的位置
     if (self.imagesAry.count == 0) {
-        
-//        [self.addPhotosBtn removeFromSuperview];
-//        self.addPhotosBtn = [[AddPhotosBtn alloc] init];
-//        [self.view addSubview:self.addPhotosBtn];
-//        [self.addPhotosBtn addTarget:self action:@selector(addPhotos) forControlEvents:UIControlEventTouchUpInside];
         [self.addPhotosBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.releaseDynamicView.releaseTextView.mas_bottom).offset(7);
             make.left.equalTo(self.view).offset(16);
             make.size.mas_equalTo(CGSizeMake(MAIN_SCREEN_W * 0.296, MAIN_SCREEN_W * 0.296));
         }];
-        
-        //分割线
-        [self.bottomSeparation mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.addPhotosBtn.mas_bottom).offset(MAIN_SCREEN_H * 0.0179);
-            make.left.equalTo(self.view);
-            make.size.mas_equalTo(CGSizeMake(MAIN_SCREEN_W, 1));
-        }];
+
         return;
     }
     
@@ -159,52 +160,45 @@
         }
     }
     
-    //遍历图片数组，创建imageView
+    //遍历图片数组，创建imageView,并对其进行约束
     for (int i = 0; i < self.imagesAry.count; i++) {
         PhotoImageView *imageView = [[PhotoImageView alloc] init];
         imageView.delegate = self;
         imageView.image = self.imagesAry[i];
         [self.imageViewArray addObject:imageView];
         [self.view addSubview:imageView];
-    }
-    //约束图片框
-    for (int i = 0; i < self.imageViewArray.count; i++) {
-        //对图片框进行约束布局
-        [self.imageViewArray[i] mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        //约束图片框
+        [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.view).offset( 15 + i%3 * (6 + MAIN_SCREEN_W * 0.296));
             make.top.equalTo(self.releaseDynamicView.releaseTextView.mas_bottom).offset(7 + i/3 * (MAIN_SCREEN_W * 0.296 + 5.5));
             make.size.mas_equalTo(CGSizeMake(MAIN_SCREEN_W * 0.296, MAIN_SCREEN_W * 0.296));
         }];
-        
-        //设置添加照片按钮的约束
-        if (i == self.imageViewArray.count - 1) {
-            [self.addPhotosBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(self.view).offset(15 + self.imageViewArray.count%3 * (6 + MAIN_SCREEN_W * 0.296));
-                make.top.equalTo(self.releaseDynamicView.releaseTextView.mas_bottom).offset(7 + (i+1)/3 * (MAIN_SCREEN_W * 0.296 + 5.5));
-                make.size.mas_equalTo(CGSizeMake(MAIN_SCREEN_W * 0.296, MAIN_SCREEN_W * 0.296));
-            }];
-            
-            //分割线
-            [self.bottomSeparation mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.top.equalTo(self.addPhotosBtn.mas_bottom).offset(MAIN_SCREEN_H * 0.0569);
-                make.left.equalTo(self.view);
-                make.size.mas_equalTo(CGSizeMake(MAIN_SCREEN_W, 1));
-            }];
-        }
-        
-        
-        
     }
     
-    //如果图片框为9时，去除添加图片按钮
+    //设置添加照片按钮的约束
+    [self.addPhotosBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view).offset(15 + self.imageViewArray.count%3 * (6 + MAIN_SCREEN_W * 0.296));
+        make.top.equalTo(self.releaseDynamicView.releaseTextView.mas_bottom).offset(7 + self.imageViewArray.count/3 * (MAIN_SCREEN_W * 0.296 + 5.5));
+        make.size.mas_equalTo(CGSizeMake(MAIN_SCREEN_W * 0.296, MAIN_SCREEN_W * 0.296));
+    }];
+    
+    //如果图片框为9时，使添加图片按钮透明度为0,同时更新圈子标签view的约束
     if (self.imagesAry.count == 9) {
-        [self.addPhotosBtn removeFromSuperview];
+//        [self.addPhotosBtn removeFromSuperview];  //如果设置为去除的话，程序会崩溃
+        self.addPhotosBtn.alpha = 0;
         
-        //分割线布局
-        [self.bottomSeparation mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.releaseDynamicView.releaseTextView.mas_bottom).offset(7 + 3 * (MAIN_SCREEN_W * 0.296 + 5.5));
-            make.left.equalTo(self.view);
-            make.size.mas_equalTo(CGSizeMake(MAIN_SCREEN_W, 1));
+        //更新圈子标签view的约束
+        [self.circleLabelView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.bottom.equalTo(self.view);
+            make.top.equalTo([self.imageViewArray lastObject].mas_bottom).offset(MAIN_SCREEN_H * 0.0569);;
+        }];
+    }else{
+        self.addPhotosBtn.alpha = 1;
+        //更新圈子标签view的约束
+        [self.circleLabelView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.bottom.equalTo(self.view);
+            make.top.equalTo(self.addPhotosBtn.mas_bottom).offset(MAIN_SCREEN_H * 0.0569);
         }];
     }
 }

@@ -25,11 +25,11 @@
         button.frame = CGRectMake(64*i+3, 100, 58, 25);
         [button addTarget:self action:@selector(doButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         //默认在第一个
-        if (button.tag == 100) {
-            [button setBackgroundColor:[UIColor blueColor]];
-        }else{
+//        if (button.tag == 100) {
+//            [button setBackgroundColor:[UIColor blueColor]];
+//        }else{
             button.backgroundColor = [UIColor redColor];
-        }
+//        }
         [self.buttonArray addObject:button];
         //将循环创建的button都添加到view上面
         [self.view addSubview:button];
@@ -42,6 +42,7 @@
             button.backgroundColor = [UIColor redColor];
         } else {
             button.backgroundColor = [UIColor blueColor];
+            NSLog(@"%@",sender.titleLabel.text);
         }
     }
 }

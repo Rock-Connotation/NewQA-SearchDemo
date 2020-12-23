@@ -18,6 +18,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 发布动态
 - (void)releaseDynamic;
+
+/// 为UITextView自定义键盘上的toolBar
+/// @param textView 需要自定义toolBar的UITextField
+- (void)addKeyBoardToolBarforTextView:(UITextView *)textView;
+
 @end
 
 @interface RelaeseDynamicView : UIView

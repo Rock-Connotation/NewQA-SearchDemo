@@ -67,7 +67,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadHistoryRecord) name:@"reloadHistory" object:nil];
 }
 
-
+//设置点击空白处收回键盘
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing:YES];
+}
 
 #pragma mark- 搜索框视图的代理方法
 - (void)jumpBack{
@@ -109,13 +112,14 @@
 
 ///点击键盘右上角的完成按钮后调用
 - (void)doneClicked{
-    [self.view endEditing:YES];
+    [self.view endEditing:YES];                 //键盘收下去
     [self searchWithString:self.searchBeginningTopView.searchTopView.searchTextfield.text];
 }
 
 
 ///点击搜索后执行操作
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [self.view endEditing:YES];                 //收回键盘
     [self searchWithString:textField.text];
     return YES;
 }

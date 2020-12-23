@@ -22,6 +22,11 @@
         [self addTopTitleView];
         
         [self addReleaseTextView];
+        
+        // 延迟0.5秒执行否则无法奏效,为UITextView自定义键盘上的toolBar
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.delegate addKeyBoardToolBarforTextView:self.releaseTextView];
+        });
     }
     return self;
 }

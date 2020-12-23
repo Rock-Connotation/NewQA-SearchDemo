@@ -7,7 +7,8 @@
 
 #import <Masonry.h>
 #import <PhotosUI/PhotosUI.h>           //用于使用PHPicker
-    
+#import <MBProgressHUD.h>               //HUD提示
+
 #import "ReleaseDynamicCV.h"
 #import "RelaeseDynamicView.h"              //界面
 #import "AddPhotosBtn.h"
@@ -25,6 +26,13 @@
 
 /// 底部的圈子标签的View
 @property (nonatomic, strong) CircleLabelView *circleLabelView;
+
+/// 添加的文本标签
+@property (nonatomic, copy) NSString *circleLabelText;
+
+/// 点击发布按钮的次数
+@property int clickReleaseDynamicBtnNumber;
+
 @end
 
 @implementation ReleaseDynamicCV
@@ -41,9 +49,14 @@
     self.releaseDynamicView = [[RelaeseDynamicView alloc] init];
     self.releaseDynamicView.frame = self.view.frame;
     [self.view addSubview:self.releaseDynamicView];
-    self.releaseDynamicView.delegate = self;
+    self.releaseDynamicView.delegate = self;        //主页面的view代理
+    
         //设置TextView的代理
     self.releaseDynamicView.releaseTextView.delegate = self;
+    
+    //关于发布按钮的一些设置
+    self.clickReleaseDynamicBtnNumber = 0;
+    self.circleLabelText = @"未添加标签";
     
     //添加照片按钮和底部的分割View
     [self addPhotosBtnAndSparationView];
@@ -193,6 +206,10 @@
     }
 }
 
+//设置点击空白处收回键盘
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing:YES];
+}
 
 
 #pragma mark- 代理相关
@@ -255,6 +272,7 @@
     return YES;
 }
 
+
 //MARK:圈子标签的代理
 - (void)clickACirleBtn:(UIButton *)sender{
     for (UIButton *button in self.circleLabelView.buttonArray) {
@@ -262,6 +280,7 @@
             [button setBackgroundImage:[UIImage imageNamed:@"圈子标签未选中背景"] forState:UIControlStateNormal];
         }else{
             [button setBackgroundImage:[UIImage imageNamed:@"圈子标签选中背景"] forState:UIControlStateNormal];
+            self.circleLabelText = sender.titleLabel.text;
         }
 //        NSLog(@"%@",sender.titleLabel.text);
     }
@@ -302,22 +321,119 @@
 }
 
 //MARK:发布动态的View的代理 ReleaseDynamicViewDelegate
+//为UItextView添加自定义toolBar
+- (void)addKeyBoardToolBarforTextView:(UITextView *)textView{
+//    [textView setKeyboardType:UIKeyboardTypeDefault];       //键盘样式为默认
+    
+    UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, 44)];
+    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(MAIN_SCREEN_W-60, 0, 50, 44)];
+    [toolBar addSubview:btn];
+    [btn setTitleColor:UIColor.systemBlueColor forState:UIControlStateNormal];
+    btn.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+    [btn setTitle:@"完成" forState:UIControlStateNormal];
+    
+    //点击完成后调用方法
+    [btn addTarget:self action:@selector(doneClicked) forControlEvents:UIControlEventTouchUpInside];
+
+    UILabel *placeHolderLabel = [[UILabel alloc] init];
+//    UITextField *placeHolderLabel = [[UITextField alloc] init];
+    [toolBar addSubview:placeHolderLabel];
+    placeHolderLabel.text = self.releaseDynamicView.placeHolderLabel.text;
+//    placeHolderLabel.text = textField.text;
+    placeHolderLabel.font = [UIFont systemFontOfSize:13];
+    placeHolderLabel.alpha = 0.8;
+    placeHolderLabel.textColor = [UIColor systemGrayColor];
+    [placeHolderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(toolBar);
+        make.top.equalTo(toolBar);
+        make.bottom.equalTo(toolBar);
+    }];
+    
+    textView.inputAccessoryView = toolBar;
+}
+
+- (void)doneClicked{
+    [self.view endEditing:YES];             //键盘收回
+}
 //如果无内容，返回到上个界面，如果有内容就提示保存
 - (void)pop{
-    //1.有内容，返回到上个界面
+   
+    //1.无内容，返回到上个界面
     if (self.releaseDynamicView.releaseTextView.text.length == 0) {
-        [self.navigationController popViewControllerAnimated:YES];
+        //跳回到邮圈
+        [self.navigationController popToRootViewControllerAnimated:YES];
     }
-    //2.无内容第一次点击提示保存内容，第二次就直接返回，并且将内容保存
+    //2.有内容点击提示保存内容
+    else{
+        [self.view endEditing:YES];
+        //遮罩层
+        UIView *view = [[UIView alloc] initWithFrame:self.view.frame];
+        view.backgroundColor = [UIColor blackColor];
+        view.userInteractionEnabled = NO;               //设置禁用
+        view.alpha = 0.5;
+        [self.view addSubview:view];
+        
+        //警告提示列表 是否需要保存草稿
+        UIAlertController *alertCv = [UIAlertController alertControllerWithTitle:@"是否保存草稿" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        
+        //定义警告活动列表的按钮方法
+            //发送网络请求，保存草稿，并且回到上一个界面
+        UIAlertAction *saveAction = [UIAlertAction actionWithTitle:@"保存" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [view removeFromSuperview];     //移除遮罩层
+            NSLog(@"%@",self.releaseDynamicView.releaseTextView.text);
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+        
+            //不保存草稿，回到“圈子”界面
+        UIAlertAction *noSaveAction = [UIAlertAction actionWithTitle:@"不保存" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }];
+        
+            //取消
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [view removeFromSuperview];     //移除遮罩层
+        }];
+        
+        //为警告活动列表添加方法
+        [alertCv addAction:saveAction];
+        [alertCv addAction:noSaveAction];
+        [alertCv addAction:cancelAction];
+        
+        //弹出警告活动列表
+        [self presentViewController:alertCv animated:YES completion:nil];
+    }
 }
 
 //发布动态
 /**
  1.如果选择标签，就提示没有选择标签，如果不选择就归类到其他
- 2.无网络连接提示
+ 2.无网络连接提示无网络连接
  3.
  */
 - (void)releaseDynamic{
-    NSLog(@"已经发布");
+    //如果未添加标签，则第一次提示未添加标签，第二次就直接归类到其他
+    if ([self.circleLabelText isEqualToString:@"未添加标签"]) {
+        self.clickReleaseDynamicBtnNumber++;
+        //显示提示
+        if (self.clickReleaseDynamicBtnNumber == 1) {
+            //显示提示框
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            [hud setMode:(MBProgressHUDModeText)];
+            hud.label.text = @"未添加标签";
+            [hud hideAnimated:YES afterDelay:1];    //延迟一秒后消失
+        }else{
+            self.circleLabelText = @"# 其他";
+            [self updateDynamic];
+        }
+    }else{
+        [self updateDynamic];
+    }
+//    NSLog(@"已经发布");
+}
+
+/// 网络上传动态
+- (void)updateDynamic{
+    NSLog(@"上传标签 %@",self.circleLabelText);
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 @end

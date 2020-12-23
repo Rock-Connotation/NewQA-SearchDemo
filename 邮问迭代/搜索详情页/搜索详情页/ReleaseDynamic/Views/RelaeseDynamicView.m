@@ -10,6 +10,8 @@
 @interface RelaeseDynamicView()
 /// 顶部的分割条
 @property (nonatomic, strong)UIView *topSeparationView;
+
+
 @end
 
 @implementation RelaeseDynamicView
@@ -87,8 +89,9 @@
 - (void)addReleaseTextView{
     //文本输入内容
     UITextView *textView = [[UITextView alloc] init];
-    textView.text = @"分享你的新鲜事～";
-    textView.textColor = [UIColor grayColor];
+//    textView.text = @"分享你的新鲜事～";
+//    textView.textColor = [UIColor grayColor];
+    textView.textColor = [UIColor blackColor];
     textView.font = [UIFont fontWithName:@"PingFangSC-Bold" size:16];
     [self addSubview:textView];
     [textView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -97,6 +100,19 @@
         make.size.mas_equalTo(CGSizeMake(MAIN_SCREEN_W, MAIN_SCREEN_H * 0.1574));
     }];
     self.releaseTextView = textView;
+    
+    
+    //提示文字的label
+    self.placeHolderLabel = [[UILabel alloc] init];
+    self.placeHolderLabel.text = @"分享你的新鲜事～";
+    self.placeHolderLabel.textColor = [UIColor grayColor];
+    self.placeHolderLabel.font = [UIFont fontWithName:@"PingFangSC-Bold" size:16];
+    [self.releaseTextView addSubview:self.placeHolderLabel];
+    [self.placeHolderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.releaseTextView).offset(MAIN_SCREEN_W * 0.0413);
+        make.top.equalTo(self.releaseTextView).offset(MAIN_SCREEN_H * 0.0225);
+        make.height.mas_equalTo(15.5);
+    }];
     
     //显示字数的label
     UILabel *label = [[UILabel alloc] init];

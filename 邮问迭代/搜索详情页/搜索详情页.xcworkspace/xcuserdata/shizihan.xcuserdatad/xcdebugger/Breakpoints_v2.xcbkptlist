@@ -122,8 +122,8 @@
             filePath = "&#x641c;&#x7d22;&#x8be6;&#x60c5;&#x9875;/ReleaseDynamic/Controllers/ReleaseDynamicCV.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "-clearPhotoImageView:"
             landmarkType = "7">
          </BreakpointContent>

@@ -30,6 +30,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// 发布动态文本内容输入框
 @property (nonatomic, strong) UITextView *releaseTextView;
 @property (nonatomic, strong) UILabel *numberOfTextLbl; //显示字数的label
+/// 提示文字
+@property (nonatomic, strong) UILabel *placeHolderLabel;
 @end
 
 NS_ASSUME_NONNULL_END

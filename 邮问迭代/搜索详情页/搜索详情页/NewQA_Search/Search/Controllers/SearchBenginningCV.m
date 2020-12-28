@@ -47,7 +47,12 @@
     //关于一些初始化
     self.viewModel = [[SearchBeginningViewModel alloc] init];
     NSMutableArray *array = [[[NSUserDefaults standardUserDefaults] objectForKey:@"historyRecords"] mutableCopy];
-    _historyRecordsAry = array;
+    if (array != nil) {
+        _historyRecordsAry = array;
+    }else{
+        self.historyRecordsAry = [NSMutableArray array];
+    }
+    
     
     //1.添加上半部分的视图
     _searchBeginningTopView = [[SearchBeginningTopView alloc] init];

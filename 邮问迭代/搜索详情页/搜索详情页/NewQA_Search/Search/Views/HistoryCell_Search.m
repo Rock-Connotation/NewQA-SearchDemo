@@ -27,7 +27,7 @@
 - (void)addLabelWithString{
     
     self.textLbl = [[UILabel alloc] init];
-    self.textLbl.text = _string;
+    self.textLbl.text = self.string;
     self.textLbl.font = [UIFont fontWithName:@"PingFangSC-Medium" size:15];
     self.textLbl.textColor = [UIColor colorWithRed:96/255.0 green:113/255.0 blue:141/255.0 alpha:1.0];
     [self.contentView addSubview:self.textLbl];

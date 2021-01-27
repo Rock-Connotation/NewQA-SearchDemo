@@ -26,10 +26,10 @@
 /// 清除所有历史记录的按钮
 @property (nonatomic, strong) UIButton *clearAllHistoryRecordbtn;
 
-/// 显示历史记录
+/// 显示历史记录的table
 @property (nonatomic, strong) UITableView *historyTable;
 
-/// 保存的历史记录
+/// 保存的历史记录文本
 @property (nonatomic, strong) NSMutableArray *historyRecordsAry;
 
 @end
@@ -39,13 +39,16 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
     self.navigationController.navigationBar.hidden = YES;
+    
+    //接收到搜索无结果页的通知，刷新历史记录的table
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadHistoryRecord) name:@"reloadHistory" object:nil];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     //关于一些初始化
-    self.viewModel = [[SearchBeginningViewModel alloc] init];
+//    self.viewModel = [[SearchBeginningViewModel alloc] init];
     NSMutableArray *array = [[[NSUserDefaults standardUserDefaults] objectForKey:@"historyRecords"] mutableCopy];
     if (array != nil) {
         _historyRecordsAry = array;
@@ -68,8 +71,7 @@
         [self addSearchBottomView];
     }
     
-    //接收到搜索无结果页的通知，刷新历史记录的table
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadHistoryRecord) name:@"reloadHistory" object:nil];
+   
 }
 
 //设置点击空白处收回键盘
@@ -178,8 +180,7 @@
     [self.navigationController pushViewController:cv animated:YES];
 }
 
-/// 将搜索的内容添加到历史记录
-/// @param string 搜索的内容
+//添加历史记录
 - (void)wirteHistoryRecord:(NSString *)string{
         //如果是第一次，直接添加到UserDefaults里面
     if (_historyRecordsAry.count == 0) {
@@ -242,10 +243,8 @@
     self.historyLabel.textColor = [UIColor colorWithRed:21/255.0 green:49/255.0 blue:91/255.0 alpha:1.0];
     [self.view addSubview:_historyLabel];
     [_historyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(_searchBeginningTopView.mas_bottom).offset(MAIN_SCREEN_H * 0.0374);
         make.top.equalTo(self.view).offset(MAIN_SCREEN_H * 0.3613);
         make.left.equalTo(_searchBeginningTopView.hotSearchView.hotSearch_KnowledgeLabel);
-//        make.left.equalTo(self.view).offset(MAIN_SCREEN_W * 0.0426);
         make.height.mas_equalTo(17);
     }];
     
@@ -261,7 +260,6 @@
     [_clearAllHistoryRecordbtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.view.mas_right).offset(-MAIN_SCREEN_W * 0.0426);
         make.bottom.equalTo(_historyLabel);
-//        make.size.mas_equalTo(CGSizeMake(, 15.5));
         make.height.mas_equalTo(15.5);
     }];
     
@@ -283,7 +281,6 @@
     _historyTable.dataSource = self;
     //设置tableView可以被选中，如果不设置的话，点击cell无反应
     _historyTable.allowsSelection = YES;
-//    _historyTable setStyle
     
 }
 
@@ -320,9 +317,6 @@
 
 //当历史记录cell被点中时，进行数据请求
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    //
-//    HistoryCell_Search *cell = (HistoryCell_Search *)[self tableView:tableView cellForRowAtIndexPath:indexPath];
-    
     [self searchWithString:_historyRecordsAry[indexPath.row]];
 }
 

@@ -89,14 +89,13 @@
     //提示内容
     if (!_NoContentlabel) {
         _NoContentlabel = [[UILabel alloc] init];
-        self.NoContentlabel.text = @"没有相关内容";
+        _NoContentlabel.text = @"没有相关内容";
         _NoContentlabel.textColor = [UIColor colorWithRed:85/255.0 green:108/255.0 blue:137/255.0 alpha:1.0];
         _NoContentlabel.font = [UIFont fontWithName:@"PingFangSC-Medium" size:12];
-        [self.view addSubview:_NoContentlabel];
-        [_NoContentlabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.left.equalTo(_centerImageView.mas_left).offset(MAIN_SCREEN_W * 0.1573);
-            make.centerX.equalTo(_centerImageView);
-            make.top.equalTo(_centerImageView.mas_bottom).offset(MAIN_SCREEN_H * 0.0495);
+        [self.view addSubview:self.NoContentlabel];
+        [self.NoContentlabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(self.centerImageView);
+            make.top.equalTo(self.centerImageView.mas_bottom).offset(MAIN_SCREEN_H * 0.0495);
             make.height.mas_equalTo(11.5);
         }];
     }
@@ -108,13 +107,14 @@
         [_askBtn setTitle:@"去提问" forState:UIControlStateNormal];
         _askBtn.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Bold" size:15];
         _askBtn.titleLabel.textColor = [UIColor whiteColor];
-        [self.view addSubview:_askBtn];
-        [_askBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        [_askBtn addTarget:self action:@selector(goAskPage) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:self.askBtn];
+        [self.askBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.view).offset(MAIN_SCREEN_W * 0.3453);
-            make.top.equalTo(_centerImageView.mas_bottom).offset(MAIN_SCREEN_H * 0.1364);
+            make.top.equalTo(self.centerImageView.mas_bottom).offset(MAIN_SCREEN_H * 0.1364);
         }];
         
-        [_askBtn addTarget:self action:@selector(goAskPage) forControlEvents:UIControlEventTouchUpInside];
+       
     }
 }
 #pragma mark- 顶部搜索框的代理方法

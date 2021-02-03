@@ -42,10 +42,13 @@
     
     //接收到搜索无结果页的通知，刷新历史记录的table
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadHistoryRecord) name:@"reloadHistory" object:nil];
+
+        NSLog(@"%s",__func__);
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"%s",__func__);
     
     //关于一些初始化
 //    self.viewModel = [[SearchBeginningViewModel alloc] init];
@@ -72,6 +75,18 @@
     }
     
    
+}
+
+
+
+- (void)viewWillLayoutSubviews{
+    [super viewWillAppear:YES];
+    NSLog(@"%s",__func__);
+}
+
+- (void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    NSLog(@"%s",__func__);
 }
 
 //设置点击空白处收回键盘

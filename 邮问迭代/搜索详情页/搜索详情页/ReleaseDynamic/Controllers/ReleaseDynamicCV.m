@@ -188,7 +188,7 @@
     
     //如果图片框为9时，使添加图片按钮透明度为0,同时更新圈子标签view的约束
     if (self.imagesAry.count == 9) {
-//        [self.addPhotosBtn removeFromSuperview];  //如果设置为去除的话，程序会崩溃
+ //如果设置为去除的话，程序会崩溃
         self.addPhotosBtn.alpha = 0;
         
         //更新圈子标签view的约束
@@ -266,8 +266,6 @@
     }else{
         self.releaseDynamicView.releaseBtn.enabled = NO;
     }
-    
-   
     
     return YES;
 }

@@ -13,9 +13,13 @@
 
 @implementation AppDelegate
 
-
+/*
+ 作用：一般在这个函数里创建widnow对象，将程序内容通过window呈现给用户
+ 调用时机：程序首次已经完成启动时执行
+ */
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    NSLog(@"application-----------------%s", __func__);
     return YES;
 }
 

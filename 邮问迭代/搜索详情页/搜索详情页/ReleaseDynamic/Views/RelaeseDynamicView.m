@@ -55,7 +55,6 @@
     [titleLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self);
         make.centerY.equalTo(leftPopBtn);
-//        make.size.mas_equalTo(CGSizeMake(83, 20));
         make.height.mas_equalTo(20);
     }];
     
@@ -94,8 +93,6 @@
 - (void)addReleaseTextView{
     //文本输入内容
     UITextView *textView = [[UITextView alloc] init];
-//    textView.text = @"分享你的新鲜事～";
-//    textView.textColor = [UIColor grayColor];
     textView.textColor = [UIColor blackColor];
     textView.font = [UIFont fontWithName:@"PingFangSC-Bold" size:16];
     [self addSubview:textView];

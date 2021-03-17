@@ -93,7 +93,6 @@
 /// 添加图片
 - (void)addPhotos{
     
-    
     //配置PhPickerConfiguration
     PHPickerConfiguration *configuration = [[PHPickerConfiguration alloc] init];
     
@@ -125,7 +124,7 @@
             break;;
         }
     }
-//    //2.再移除照片框
+   //2.再移除照片框
     [imageView removeFromSuperview];
     
     //3.重新布局
@@ -275,9 +274,11 @@
 - (void)clickACirleBtn:(UIButton *)sender{
     for (UIButton *button in self.circleLabelView.buttonArray) {
         if (button.tag != sender.tag) {
-            [button setBackgroundImage:[UIImage imageNamed:@"圈子标签未选中背景"] forState:UIControlStateNormal];
+//            [button setBackgroundImage:[UIImage imageNamed:@"圈子标签未选中背景"] forState:UIControlStateNormal];
+            button.backgroundColor = [UIColor colorNamed:@"圈子按钮未选中时颜色"];
         }else{
-            [button setBackgroundImage:[UIImage imageNamed:@"圈子标签选中背景"] forState:UIControlStateNormal];
+//            [button setBackgroundImage:[UIImage imageNamed:@"圈子标签选中背景"] forState:UIControlStateNormal];
+            button.backgroundColor = [UIColor colorNamed:@"圈子按钮选中时颜色"];
             self.circleLabelText = sender.titleLabel.text;
         }
 //        NSLog(@"%@",sender.titleLabel.text);
@@ -304,14 +305,12 @@
 //                        [weakSelf.imagesAry removeObjectAtIndex:0];
                         [weakSelf.imagesAry addObject:(UIImage *)object];
                     }
-                    
-                    
                     //遍历循环到最后一个时进行图片框的添加约束
-                    dispatch_async(dispatch_get_main_queue(),^{
-                        if (i == results.count - 1) {
+                    if (i == results.count - 1) {
+                        dispatch_async(dispatch_get_main_queue(),^{
                             [weakSelf imageViewsConstraint];
-                        }
-                    });
+                        });
+                    }
                 });
             }
         }];
@@ -355,7 +354,6 @@
 }
 //如果无内容，返回到上个界面，如果有内容就提示保存
 - (void)pop{
-   
     //1.无内容，返回到上个界面
     if (self.releaseDynamicView.releaseTextView.text.length == 0) {
         //跳回到邮圈

@@ -24,6 +24,11 @@
     btn.frame = CGRectMake(100, 100, 100, 100);
     [self.view addSubview:btn];
     // Do any additional setup after loading the view.
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy-MM-dd"];
+        NSString *dateTime = [formatter stringFromDate:[NSDate date]];
+    NSLog(@"获取当前的日期为-------%@",dateTime);
 }
 
 - (void)jump{

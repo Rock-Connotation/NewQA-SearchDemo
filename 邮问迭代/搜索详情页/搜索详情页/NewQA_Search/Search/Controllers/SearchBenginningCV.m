@@ -181,8 +181,8 @@
     
     //3.有结果,跳转到搜索结果页，并写入历史记录
         //3.1跳转到搜索结果
-//    SearchEndCV *cv = [[SearchEndCV alloc] init];
-//    [self.navigationController pushViewController:cv animated:YES];
+    SearchEndCV *cv = [[SearchEndCV alloc] init];
+    [self.navigationController pushViewController:cv animated:YES];
     
         //3.2添加历史记录
     [self wirteHistoryRecord:searchString];
@@ -191,8 +191,8 @@
    
     
 //    //跳转到搜索无结果界面
-    NOSearchResultsCV *cv = [[NOSearchResultsCV alloc] init];
-    [self.navigationController pushViewController:cv animated:YES];
+//    NOSearchResultsCV *cv = [[NOSearchResultsCV alloc] init];
+//    [self.navigationController pushViewController:cv animated:YES];
 }
 
 //添加历史记录

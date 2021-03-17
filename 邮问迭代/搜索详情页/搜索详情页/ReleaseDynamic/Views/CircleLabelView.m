@@ -23,8 +23,6 @@
         [self addLabelAndView];
         
         [self addButtonsWithArray:array];
-        
-        [self btnsAddConstraints];
     }
     return self;
 }
@@ -69,11 +67,15 @@
         button.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Medium" size:12];
         button.tag = 100 + i;      //设置每个button的tag
         //设置未选中时的背景
-        [button setBackgroundImage:[UIImage imageNamed:@"圈子标签未选中背景"] forState:UIControlStateNormal];
+//        [button setBackgroundImage:[UIImage imageNamed:@"圈子标签未选中背景"] forState:UIControlStateNormal];
+        button.backgroundColor = [UIColor colorNamed:@"圈子按钮未选中时颜色"];
         [button addTarget:self action:@selector(select:) forControlEvents:UIControlEventTouchUpInside];
+        button.layer.cornerRadius = 12.5;
+        button.layer.masksToBounds = YES;
         [self.buttonArray addObject:button];
         [self addSubview:button];
     }
+    [self btnsAddConstraints];
 }
 
 ///为btns添加约束，让它自动换行等等
